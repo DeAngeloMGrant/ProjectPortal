@@ -1,0 +1,260 @@
+body {
+    background: #303030;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    overflow: hidden;
+}
+
+p {
+    margin: 0;
+}
+
+.accent {
+    background: #00BCD4;
+}
+
+/* materialize */
+.modal-footer, .modal-content {
+    background: #424242 !important;
+}
+
+.col {
+    padding: 0 !important;
+}
+
+.tabs {
+    background: #212121;
+}
+
+h5 {
+    margin: 0;
+}
+
+.tabs .indicator {
+    background: #00BCD4;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: #00BCD4;
+}
+
+.tabs .tab a {
+    color: rgba(0, 188, 212, 0.7);
+}
+
+.collection .collection-item.avatar {
+    background-color: #323232;
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #00BCD4;
+    box-shadow: 0 1px 0 0 #00BCD4;
+}
+
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
+    color: #00BCD4;
+}
+
+/* title bar */
+.titlebar {
+    height: 64px;
+    background: #111;
+  -webkit-user-select: none;
+}
+
+.titlebar > .draggable {
+    -webkit-app-region: drag;
+    height: 15px;
+	background: #090909;
+}
+
+.titlebar > .title {
+    padding: 5px 15px;
+    margin-top: -2.5px;
+}
+
+.titlebar > .title > .user {
+    font-weight: 700;
+}
+
+/* chat view */
+.chatview {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    background: #424242;
+}
+
+.identity {
+    background: #212121;
+    color: white;
+    padding: 5px 15px;
+    height: 64px;
+    -webkit-user-select: none;
+}
+
+.identity > a.btn-floating.right {
+    margin-top: 7.5px;
+}
+
+.chatview > .contents {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    height: calc(100vh - 64px);
+}
+
+/* convo view */
+.convoview {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.convoview > .convolist {
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.identity > .state {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.state.online {
+    color: #4CAF50;
+}
+
+.state.away {
+    color: #FFC107;
+}
+
+.state.busy {
+    color: #F44336;
+}
+
+.state.offline {
+    color: #BDBDBD;
+}
+
+.state.online.pill, .state.online.circle {
+    background: #4CAF50;
+    color: white;
+}
+
+.state.away.pill, .state.away.circle {
+    background: #FFC107;
+    color: black;
+}
+
+.state.busy.pill, .state.busy.circle {
+    background: #F44336;
+    color: white;
+}
+
+.state.offline.pill, .state.offline.circle {
+    background: #BDBDBD;
+    color: black;
+}
+
+.state.pill {
+    padding: 2.5px 5px;
+    border-radius: 5px;
+}
+
+.state.circle {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+}
+
+.state.picture {
+    border-radius: 50%;
+    border: solid 2.5px;
+    height: 48px;
+    width: auto;
+    margin-top: 2px;
+}
+
+.userarray > .state.picture {
+    height: 32px;
+}
+
+.identity > .identitypic > .user {
+    margin-left: 58px;
+    margin-top: -50px;
+}
+
+.identity > .identitypic > .status {
+    margin-left: 58px;
+    margin-top: 0px;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.identity > .members {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.identity > .msg > .material-icons {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+/* messages layout */
+.theme > .msgwrapper > .msg > .msgbox {
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.theme > .msgwrapper > .msg {
+    padding: 15px;
+}
+
+.theme > .msgwrapper > .msg > .msgbox > .user {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.msgwrapper {
+    width: 100%;
+}
+
+.msgspacer {
+    height: 72px;
+}
+
+/* default theme colors */
+.theme > .msgwrapper > .left.msg > .msgbox {
+    background: #BDBDBD;
+    color: black;
+}
+
+.theme > .msgwrapper > .right.msg > .msgbox {
+    background: #00BCD4;
+    color: black;
+}
+
+/* login page */
+.about {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    background: #424242;
+    padding: 25px !important;
+}
+
+.login {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 25px !important;
+}

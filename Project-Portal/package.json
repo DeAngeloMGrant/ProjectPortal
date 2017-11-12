@@ -1,0 +1,24 @@
+{
+  "name": "project-portal",
+  "productName": "Project Portal",
+  "version": "0.1.0",
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "^1.7.8",
+    "electron-packager": "^8.1.0"
+  },
+  "description": "Senior Project: Desktop Messaging App",
+  "dependencies": {
+    "electralize": "^1.1.18",
+    "electron": "^1.7.8",
+    "firebase": "^4.6.0",
+    "hammerjs": "^2.0.8",
+     "jquery": "^3.2.1",
+    "materialize-css": "^0.100.2"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "De'Angelo Grant",
+  "license": "ISC"
+}
