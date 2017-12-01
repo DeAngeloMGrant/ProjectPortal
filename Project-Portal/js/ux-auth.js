@@ -4,11 +4,11 @@ const uxuser = require("./ux-user.js");
 
 var config = {
   apiKey: "AIzaSyCy306yGeg5JBfMaku7e7a4GPNdQjTB_aM",
- authDomain: "project-portal-960b0.firebaseapp.com",
- databaseURL: "https://project-portal-960b0.firebaseio.com",
- projectId: "project-portal-960b0",
- storageBucket: "project-portal-960b0.appspot.com",
- messagingSenderId: "316490190117"
+   authDomain: "project-portal-960b0.firebaseapp.com",
+   databaseURL: "https://project-portal-960b0.firebaseio.com",
+   projectId: "project-portal-960b0",
+   storageBucket: "project-portal-960b0.appspot.com",
+   messagingSenderId: "316490190117"
 };
 firebase.initializeApp(config);
 

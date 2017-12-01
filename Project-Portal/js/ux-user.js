@@ -31,7 +31,7 @@ ipcMain.on("ui-user.mentioname", (e, a) => {
             if(a.firstime){
                 firebase.database().ref("states/" + uid).set({
                     state: 1,
-                    msg: "Chatting on Project Mike!"
+                    msg: "Chatting on Project Portal!"
                 });
             }
             e.sender.send("ux-user.mentioname", {state:"success"});

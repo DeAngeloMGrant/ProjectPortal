@@ -99,10 +99,11 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 }
 
 .chatview > .contents {
+  position: relative;
     overflow-y: auto;
     overflow-x: hidden;
     width: 100%;
-    height: calc(100vh - 64px);
+    height:580px;
 }
 
 /* convo view */

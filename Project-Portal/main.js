@@ -1,4 +1,5 @@
 const electron = require('electron')
+const $ = require('jQuery');
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -8,9 +9,13 @@ const path = require('path')
 const url = require('url')
 const uxauth = require("./js/ux-auth.js");
 
+var win = remote.getCurrentWindow();
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
+
 
 function createWindow () {
   // Create the browser window.
@@ -22,6 +27,8 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
+
+
 
   uxauth.setWindow(mainWindow);
 
@@ -35,6 +42,10 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  $('#btn-min').click(function(){
+    win.minimize();
+  });
 }
 
 // This method will be called when Electron has finished

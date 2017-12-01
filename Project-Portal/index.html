@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/app.css">
 
   <!-- js -->
+  <script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
 </head>
 
 <body>
@@ -21,9 +22,9 @@
   <div class="titlebar">
     <div class="draggable"></div>
     <div class="right title">
-      <a class="btn-floating waves-effect waves-light transparent z-depth-0"><i class="material-icons">remove</i></a>
-      <a onclick="window.fullscreen();" class="btn-floating waves-effect waves-light transparent z-depth-0"><i class="material-icons">fullscreen</i></a>
-      <a onclick="window.close();" class="btn-floating waves-effect waves-light transparent z-depth-0"><i class="material-icons">close</i></a>
+      <a id="btn-min" class="btn-floating waves-effect waves-light transparent z-depth-0"><i class="material-icons">remove</i></a>
+      <a id="btn-max"  class="btn-floating waves-effect waves-light transparent z-depth-0"><i class="material-icons">fullscreen</i></a>
+      <a id="btn-close"  class="btn-floating waves-effect waves-light transparent z-depth-0"><i class="material-icons">close</i></a>
     </div>
     <div class="title">
       <a class="btn-floating waves-effect waves-light transparent z-depth-0"><i class="material-icons">menu</i></a>
@@ -65,7 +66,7 @@
 
   <div class="row">
 
-    <div class="col s4 convoview">
+    <div class="col s4 convoview" style="width: 25%">
       <!-- conversations view -->
       <div class="identity z-depth-2">
         <a onclick="$('#userState').modal('open');" class="modal-trigger btn-floating waves-effect waves-light transparent z-depth-0 right"><i class="material-icons">edit</i></a>
@@ -77,21 +78,13 @@
       </div>
 
       <!-- tabs -->
-      <div class="row">
+      <div class="row" >
         <div class="col s12">
           <ul class="tabs">
-            <li class="tab"><a href="#convos">Conversations</a></li>
             <li class="tab"><a href="#friends">Friends</a></li>
-            <li class="tab"><a href="#directory">Directory</a></li>
           </ul>
         </div>
 
-        <div id="convos" class="col s12">
-          <div class="convolist">
-
-
-          </div>
-        </div>
 
         <div id="friends" class="col s12">
           <div class="convolist">
@@ -99,15 +92,10 @@
           </div>
         </div>
 
-        <div id="directory" class="col s12">
-          <div class="convolist">
-
-          </div>
-        </div>
       </div>
     </div>
 
-    <div class="col s8 chatview">
+    <div class="col s8 chatview" style="width: 75%">
       <!-- chat view -->
 
       <!-- Group identity bar framework:  -->
@@ -125,37 +113,42 @@
                     </div>
                 </div>    -->
 
-      <!-- 1-1 identity bar framework:  -->
-      <div class="identity z-depth-2">
+      <!-- 1-1 identity bar framework:
+      <div class="identity z-depth-2" style="position: fixed; width: 64.5%;">
         <a class="btn-floating waves-effect waves-light transparent z-depth-0 right"><i class="material-icons">settings</i></a>
         <div class="identitypic">
           <img class="state busy picture" src="https://placehold.it/48x48"></img>
-          <p class="user">@onewiththecore</p>
+          <p class="user">Friend</p>
           <p class="status">enjoying DEF CON</p>
         </div>
       </div>
+      -->
 
       <div class="contents">
-        <div class="theme">
+        <div class="theme" style="background-color: grey">
+          <!--
 
-          <div class="msgwrapper">
+        <div class="msgwrapper">
             <div class="left msg">
 
-              <div class="msgbox">
+            <  <div class="msgbox">
                 <p class="msgtext">hiya!</p>
                 <span class="user">@onewiththecore &mdash; 12:07 7/22/17</span>
               </div>
 
             </div>
           </div>
+
           <div class="msgspacer"></div>
-          <div class="msgwrapper">
+          !-->
+          <div id="results"class="msgwrapper">
             <div class="right msg">
 
-              <div class="msgbox">
+            <!--  <div class="msgbox">
                 <p class="msgtext">hi friendo!</p>
                 <span class="user">Delivered &mdash; 12:07 7/22/17</span>
               </div>
+              !-->
 
             </div>
           </div>
@@ -166,13 +159,14 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <textarea id="chatter" class="materialize-textarea"></textarea>
+              <button id="post"class="btn waves-effect waves-light" style=" margin: 0 0 70px 20px;"type="submit" name="action">Submit
+        <i class="material-icons right" >send</i>
+      </button>
               <label for="textarea1">Say Something Nice :)</label>
             </div>
           </div>
-          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right">send</i>
-  </button>
+
         </form>
 
       </div>
@@ -180,6 +174,71 @@
     </div>
 
   </div>
+  <script>
+  var myFirebase = new Firebase('https://project-portal-960b0.firebaseio.com/');
+  var theUser = document.getElementById("titleBarUser");
+  var msg = document.querySelector('#chatter');
+  var send = document.querySelector('#post');
+
+  var cDate = new Date();
+  send.addEventListener("click", function(){
+   var username = theUser.value;
+    var msgText = msg.value;
+    myFirebase.push({users: "username", text: msgText, currentdate: cDate.toLocaleString()});
+
+    msg.value = "";
+  });
+
+  var listen = function() {
+    myFirebase.on('child_added', function(snapshot){
+      var newUser = snapshot.val();
+      var newMsg = snapshot.val();
+      var newTime = snapshot.val();
+
+      var msgUsername = document.createElement("username");
+      msgUsername.textContent = newUser.users;
+      msgUsername.style.fontSize = "18px";
+      msgUsername.style.color = "black";
+      msgUsername.style.fontWeight = "bold";
+
+
+      var msgTextElement = document.createElement("msgtext");
+      msgTextElement.textContent = newMsg.text;
+      msgTextElement.style.fontSize = "14px";
+
+
+
+      var brk = document.createElement("br");
+      var space = document.createElement("div");
+
+
+      var msgTimeElement = document.createElement("time");
+      msgTimeElement.style.fontSize = "9.5px";
+      msgTimeElement.style.color = "black";
+      msgTimeElement.style.fontStyle = "italic";
+
+      msgTimeElement.textContent = newTime.currentdate;
+
+      var msgElement = document.createElement("div");
+      msgElement.appendChild(msgUsername);
+      msgElement.appendChild(space);
+      msgElement.appendChild(msgTextElement);
+      msgElement.appendChild(brk);
+      msgElement.appendChild(msgTimeElement);
+
+      document.getElementById("results").appendChild(msgElement);
+      
+
+    });
+
+  }
+
+  listen();
+  </script>
+
+
+
+
 
 </body>
 
